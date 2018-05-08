@@ -1,0 +1,40 @@
+{
+  "name": "yuncms/identification",
+  "description": "The identification module for yuncms.",
+  "keywords": [
+    "identification",
+    "yuncms"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Xu TL",
+      "email": "xutongle@gmail.com"
+    }
+  ],
+  "require": {
+    "yuncms/framework": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "yuncms\\identification\\": "src"
+    }
+  },
+  "extra": {
+    "yuncms": "mainfest.php",
+    "branch-alias": {
+      "dev-master": "2.0.0-dev"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  ]
+}
