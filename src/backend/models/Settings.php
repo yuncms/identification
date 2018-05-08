@@ -5,14 +5,16 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\authentication\backend\models;
+namespace yuncms\identification\backend\models;
 
 use Yii;
 use yuncms\base\Model;
 
 /**
- * 附件上传设置
- * @package yuncms\attachment\models
+ * 设置
+ * @package yuncms\identification\models
+ *
+ * @property array $types
  */
 class Settings extends Model
 {
@@ -60,9 +62,9 @@ class Settings extends Model
     public function attributeLabels()
     {
         return [
-            'enableMachineReview' => Yii::t('yuncms/authentication', 'Enable Machine Review'),
-            'ociAppCode' => Yii::t('yuncms/authentication', 'Machine Review Code'),
-            'volume' => Yii::t('yuncms/authentication', 'Storage Volume'),
+            'enableMachineReview' => Yii::t('yuncms/identification', 'Enable Machine Review'),
+            'ociAppCode' => Yii::t('yuncms/identification', 'Machine Review Code'),
+            'volume' => Yii::t('yuncms/identification', 'Storage Volume'),
         ];
     }
 
@@ -71,6 +73,6 @@ class Settings extends Model
      */
     public function formName()
     {
-        return 'authentication';
+        return 'identification';
     }
 }

@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\authentication\frontend;
+namespace yuncms\identification\frontend;
 
 /**
  * Class Module
@@ -13,7 +13,7 @@ namespace yuncms\authentication\frontend;
  * @author Tongle Xu <xutongle@gmail.com>
  * @since 3.0
  */
-class Module extends \yuncms\authentication\Module
+class Module extends \yuncms\identification\Module
 {
-    public $defaultRoute = 'authentication';
+    public $defaultRoute = 'identification';
 }

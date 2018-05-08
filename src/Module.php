@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\authentication;
+namespace yuncms\identification;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -37,7 +37,7 @@ class Module extends \yuncms\base\Module
      */
     public static function getVolume()
     {
-        return Yii::$app->getFilesystem()->get(Yii::$app->settings->get('volume', 'authentication', 'authentication'));
+        return Yii::$app->getFilesystem()->get(Yii::$app->settings->get('volume', 'identification', 'identification'));
     }
 
     /**
