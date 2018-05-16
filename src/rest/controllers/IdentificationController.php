@@ -31,13 +31,13 @@ class IdentificationController extends Controller
         return array_merge(parent::verbs(), [
             'get' => ['GET'],
             'put' => ['POST'],
-            'authentication' => ['GET', 'POST'],
+            'identification' => ['GET', 'POST'],
         ]);
     }
 
     /**
      * 获取实名认证
-     * @return null|\yuncms\db\ActiveRecord|static
+     * @return Identification
      */
     public function actionGet()
     {
@@ -46,7 +46,7 @@ class IdentificationController extends Controller
 
     /**
      * 提交实名认证
-     * @return null|\yuncms\db\ActiveRecord|static
+     * @return Identification
      * @throws ServerErrorHttpException
      * @throws \yii\base\InvalidConfigException
      */
@@ -67,12 +67,12 @@ class IdentificationController extends Controller
 
     /**
      * 实名认证
-     * @return IdentificationController|\yuncms\db\ActiveRecord
+     * @return Identification
      * @throws MethodNotAllowedHttpException
      * @throws ServerErrorHttpException
      * @throws \yii\base\InvalidConfigException
      */
-    public function actionAuthentication()
+    public function actionIdentification()
     {
         if (Yii::$app->request->isPost) {
             return $this->actionPut();

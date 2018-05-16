@@ -46,9 +46,9 @@ class Identification extends ActiveRecord
     const TYPE_HKMCID = 'hkmcid';
 
     //认证状态
-    const STATUS_PENDING = 0b0;
-    const STATUS_REJECTED = 0b1;
-    const STATUS_AUTHENTICATED = 0b10;
+    const STATUS_PENDING = 0b0;//等待认证
+    const STATUS_REJECTED = 0b1;//认证被拒绝
+    const STATUS_IDENTIFIED = 0b10;//已经认证
 
     /**
      * @inheritdoc
@@ -147,7 +147,7 @@ class Identification extends ActiveRecord
             'StatusRange' => [
                 'status',
                 'in',
-                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_AUTHENTICATED],
+                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED],
                 'on' => [self::SCENARIO_VERIFY]
             ],
 
@@ -215,6 +215,18 @@ class Identification extends ActiveRecord
     }
 
     /**
+     * 设置用户已经实名认证
+     * @return bool|int
+     */
+    public function setIdentified()
+    {
+        if ((bool)$this->user->updateAttributes(['identified' => true])) {
+            return $this->updateAttributes(['status' => self::STATUS_IDENTIFIED]);
+        }
+        return false;
+    }
+
+    /**
      * 获取认证实例
      * @param int $userId
      * @return null|ActiveRecord|static
@@ -232,10 +244,10 @@ class Identification extends ActiveRecord
      * @param int $user_id
      * @return bool
      */
-    public static function isAuthentication($user_id)
+    public static function isIdentified($user_id)
     {
         $user = static::findOne(['user_id' => $user_id]);
-        return $user ? $user->status == static::STATUS_AUTHENTICATED : false;
+        return $user ? $user->status == static::STATUS_IDENTIFIED : false;
     }
 
     /**
