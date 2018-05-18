@@ -95,7 +95,7 @@ class IdentificationSearch extends Model
             "status" => [
                 Identification::STATUS_PENDING => Yii::t('yuncms/identification', 'Pending review'),
                 Identification::STATUS_REJECTED => Yii::t('yuncms/identification', 'Rejected'),
-                Identification::STATUS_AUTHENTICATED => Yii::t('yuncms/identification', 'Authenticated'),
+                Identification::STATUS_IDENTIFIED => Yii::t('yuncms/identification', 'Identified'),
             ],
         ];
         //根据具体值显示对应的值

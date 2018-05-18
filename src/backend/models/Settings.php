@@ -8,7 +8,7 @@
 namespace yuncms\identification\backend\models;
 
 use Yii;
-use yuncms\base\Model;
+use yii\base\Model;
 
 /**
  * 设置
