@@ -19,25 +19,12 @@ use League\Flysystem\AdapterInterface;
 class Module extends \yuncms\base\Module
 {
     /**
-     * 初始化存储
-     * @throws InvalidConfigException
-     */
-//    public function init()
-//    {
-//        parent::init();
-//        if (!Yii::$app->getFilesystem()->has(Yii::$app->settings->get('volume', 'authentication', 'authentication'))) {
-//            throw new InvalidConfigException("Unknown storage configuration.");
-//        }
-//    }
-
-    /**
      * 获取头像存储卷
-     * @return object|\yuncms\filesystem\Adapter
      * @throws \yii\base\InvalidConfigException
      */
     public static function getVolume()
     {
-        return Yii::$app->getFilesystem()->get(Yii::$app->settings->get('volume', 'identification', 'identification'));
+        return Yii::$app->filesystem->disk(Yii::$app->settings->get('volume', 'identification', 'identification'));
     }
 
     /**
@@ -66,7 +53,7 @@ class Module extends \yuncms\base\Module
     public static function deleteImage($userId, $image): bool
     {
         $idCardPath = self::getSubPath($userId, $image);
-        if (self::getVolume()->has($idCardPath)) {
+        if (self::getVolume()->exists($idCardPath)) {
             return self::getVolume()->delete($idCardPath);
         }
         return true;
@@ -84,10 +71,10 @@ class Module extends \yuncms\base\Module
     public static function saveImage($userId, $originalImage, $targetImage)
     {
         $idCardPath = self::getSubPath($userId, $targetImage);
-        if (self::getVolume()->has($idCardPath)) {
+        if (self::getVolume()->exists($idCardPath)) {
             self::getVolume()->delete($idCardPath);
         }
-        self::getVolume()->write($idCardPath, FileHelper::readAndDelete($originalImage), [
+        self::getVolume()->put($idCardPath, FileHelper::readAndDelete($originalImage), [
             'visibility' => AdapterInterface::VISIBILITY_PRIVATE
         ]);
         return $idCardPath;
