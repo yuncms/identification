@@ -129,17 +129,17 @@ class Identification extends \yuncms\identification\models\Identification
         if (parent::beforeSave($insert)) {
             if ($this->id_file && ($tempFile = $this->id_file->saveAsTempFile()) != false) {
                 $idCardPath = Module::saveImage($this->user_id, $tempFile, '_passport_cover_image.jpg');
-                $this->passport_cover = Module::getVolume()->getUrl($idCardPath);
+                $this->passport_cover = Module::getVolume()->url($idCardPath);
             }
 
             if ($this->id_file1 && ($tempFile = $this->id_file1->saveAsTempFile()) != false) {
                 $idCardPath = Module::saveImage($this->user_id, $tempFile, '_passport_person_page_image.jpg');
-                $this->passport_person_page = Module::getVolume()->getUrl($idCardPath);
+                $this->passport_person_page = Module::getVolume()->url($idCardPath);
             }
 
             if ($this->id_file2 && ($tempFile = $this->id_file2->saveAsTempFile()) != false) {
                 $idCardPath = Module::saveImage($this->user_id, $tempFile, '_passport_self_holding_image.jpg');
-                $this->passport_self_holding = Module::getVolume()->getUrl($idCardPath);
+                $this->passport_self_holding = Module::getVolume()->url($idCardPath);
             }
             if (!$insert && $this->scenario == 'update') {
                 $this->status = self::STATUS_PENDING;
