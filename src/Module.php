@@ -40,7 +40,7 @@ class Module extends \yuncms\base\Module
         $dir1 = substr($id, 0, 3);
         $dir2 = substr($id, 3, 2);
         $dir3 = substr($id, 5, 2);
-        return $dir1 . '/' . $dir2 . '/' . $dir3 . '/' . substr($userId, -2) . $fileName;
+        return 'identification' . DIRECTORY_SEPARATOR . $dir1 . DIRECTORY_SEPARATOR . $dir2 . DIRECTORY_SEPARATOR . $dir3 . DIRECTORY_SEPARATOR . substr($userId, -2) . $fileName;
     }
 
     /**
