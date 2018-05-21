@@ -55,7 +55,7 @@ class Identification extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%authentications}}';
+        return '{{%identification}}';
     }
 
     /**
