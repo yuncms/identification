@@ -82,7 +82,7 @@ class Identification extends \yuncms\identification\models\Identification
             ],
 
             // verifyCode needs to be entered correctly
-            'verifyCode' => ['verifyCode', 'captcha', 'captchaAction' => '/authentication/authentication/captcha'],
+            'verifyCode' => ['verifyCode', 'captcha', 'captchaAction' => '/identification/identification/captcha'],
 
             'registrationPolicyRequired' => ['registrationPolicy', 'required', 'skipOnEmpty' => false, 'requiredValue' => true,
                 'message' => Yii::t('yuncms/identification', '{attribute} must be selected.')

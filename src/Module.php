@@ -8,7 +8,6 @@
 namespace yuncms\identification;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yuncms\helpers\FileHelper;
 use League\Flysystem\AdapterInterface;
 
@@ -24,7 +23,7 @@ class Module extends \yuncms\base\Module
      */
     public static function getVolume()
     {
-        return Yii::$app->filesystem->disk(Yii::$app->settings->get('volume', 'identification', 'identification'));
+        return Yii::$app->filesystem->disk(Yii::$app->settings->get('volume', 'identification', 'local'));
     }
 
     /**

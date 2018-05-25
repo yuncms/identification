@@ -36,7 +36,7 @@ $form = ActiveForm::begin([
 ]); ?>
 
 <?= $form->field($model, 'registrationPolicy')->checkbox()->label(
-    Yii::t('yuncms/authentication', 'Agree and accept {serviceAgreement} and {privacyPolicy}', [
+    Yii::t('yuncms/identification', 'Agree and accept {serviceAgreement} and {privacyPolicy}', [
         'serviceAgreement' => Html::a(Yii::t('yuncms/identification', 'Service Agreement'), ['/legal/terms']),
         'privacyPolicy' => Html::a(Yii::t('yuncms/identification', 'Privacy Policy'), ['/legal/privacy']),
     ]), [

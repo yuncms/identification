@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <dt><?= Yii::t('yuncms/identification', 'Id Card') ?></dt>
                             <dd><?= $model->id_card ?></dd>
                             <dd><a href="<?= Url::to(['/identification/identification/update']) ?>"
-                                   class="btn btn-warning">修改认证资料</a>
+                                   class="btn btn-warning"><?= Yii::t('yuncms/identification', 'Modify information') ?></a>
                             </dd>
                         </dl>
                     </div>

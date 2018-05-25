@@ -71,7 +71,7 @@ class IdentificationController extends Controller
      */
     public function actionCreate()
     {
-        if ((Identification::findOne(['user_id' => Yii::$app->user->id])) != null || Identification::isAuthentication(Yii::$app->user->id)) {
+        if ((Identification::findOne(['user_id' => Yii::$app->user->id])) != null || Identification::isIdentified(Yii::$app->user->id)) {
             return $this->redirect(['index']);
         }
         $model = new Identification();

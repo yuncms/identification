@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $this->render('@yuncms/user/views/_profile_menu') ?>
     </div>
     <div class="col-md-10">
-        <h2 class="h3 profile-title"><?= Yii::t('yuncms/identification', 'Authentication') ?></h2>
+        <h2 class="h3 profile-title"><?= Yii::t('yuncms/identification', 'Identification') ?></h2>
         <div class="row">
             <div class="col-md-12">
                 <?= $this->render('_form', [
