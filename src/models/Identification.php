@@ -249,7 +249,6 @@ class Identification extends ActiveRecord
     public function setIdentified()
     {
         $this->user->updateAttributes(['identified' => true]);
-        $this->updateAttributes(['status' => self::STATUS_IDENTIFIED]);
         return true;
     }
 
