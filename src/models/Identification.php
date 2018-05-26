@@ -34,6 +34,7 @@ use yuncms\user\models\User;
 class Identification extends ActiveRecord
 {
     //场景定义
+    const SCENARIO_INIT = 'init';
     const SCENARIO_CREATE = 'create';//创建
     const SCENARIO_UPDATE = 'update';//更新
     const SCENARIO_VERIFY = 'verify';
@@ -142,13 +143,13 @@ class Identification extends ActiveRecord
             'statusDefault' => [
                 'status',
                 'default',
-                'value' => self::STATUS_UNSUBMITTED,
+                'value' => self::STATUS_PENDING,
                 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE, self::SCENARIO_VERIFY]
             ],
             'StatusRange' => [
                 'status',
                 'in',
-                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED, self::STATUS_UNSUBMITTED],
+                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED],
                 'on' => [self::SCENARIO_VERIFY]
             ],
 
@@ -234,7 +235,7 @@ class Identification extends ActiveRecord
     public static function findByUserId($userId)
     {
         if (($model = self::findOne(['user_id' => $userId])) === null) {
-            $model = self::create(['scenario' => self::SCENARIO_CREATE, 'registrationPolicy' => true]);
+            $model = self::create(['scenario' => self::SCENARIO_INIT, 'registrationPolicy' => true, 'status' => self::STATUS_UNSUBMITTED]);
         }
         return $model;
     }
