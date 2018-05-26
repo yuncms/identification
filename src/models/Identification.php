@@ -247,7 +247,7 @@ class Identification extends ActiveRecord
      */
     public static function isIdentified($user_id)
     {
-        $user = static::findOne(['user_id' => $user_id]);
+        $user = static::findByUserId($user_id);
         return $user ? $user->status == static::STATUS_IDENTIFIED : false;
     }
 
