@@ -213,6 +213,27 @@ class Identification extends ActiveRecord
         return $genderName;
     }
 
+    public function getStatusText()
+    {
+        switch ($this->status) {
+            case self::STATUS_PENDING:
+                $genderName = Yii::t('yuncms/identification', 'Pending review');
+                break;
+            case self::STATUS_REJECTED:
+                $genderName = Yii::t('yuncms/identification', 'Rejected');
+                break;
+            case self::STATUS_IDENTIFIED:
+                $genderName = Yii::t('yuncms/identification', 'Identified');
+                break;
+            case self::STATUS_UNSUBMITTED:
+                $genderName = Yii::t('yuncms/identification', 'Unsubmitted');
+                break;
+            default:
+                throw new \RuntimeException('Not set!');
+        }
+        return $genderName;
+    }
+
     /**
      * @return \yii\db\ActiveQueryInterface
      */
@@ -254,6 +275,14 @@ class Identification extends ActiveRecord
     {
         $user = static::findByUserId($user_id);
         return $user ? $user->status == static::STATUS_IDENTIFIED : false;
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if (!$insert && $this->status == self::STATUS_IDENTIFIED) {
+            $this->user->updateAttributes(['identified' => true]);
+        }
     }
 
     /**

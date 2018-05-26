@@ -20,6 +20,7 @@ return [
     'Agree and accept Service Agreement and Privacy Policy' => '同意并接受 服务协议 和 隐私政策',
     'Agree and accept {serviceAgreement} and {privacyPolicy}' => '同意并接受 {serviceAgreement} 和 {privacyPolicy}',
     'Army ID' => '军官证',
+    'Unsubmitted' => '未提交',
     'Identification' => '实名认证',
     'Authenticated' => '已认证',
     'Authentication' => '实名认证',
