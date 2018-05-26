@@ -140,13 +140,18 @@ class Identification extends ActiveRecord
             ],
 
             //status rule
+            'StatusRange' => [
+                'status',
+                'in',
+                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED, self::STATUS_UNSUBMITTED],
+            ],
+
             'statusDefault' => [
                 'status',
                 'default',
-                'value' => self::STATUS_PENDING,
-                'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE, self::SCENARIO_VERIFY]
+                'value' => self::STATUS_UNSUBMITTED
             ],
-            'StatusRange' => [
+            'verify' => [
                 'status',
                 'in',
                 'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED],
