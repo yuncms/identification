@@ -49,6 +49,7 @@ class Identification extends ActiveRecord
     const STATUS_PENDING = 0b0;//等待认证
     const STATUS_REJECTED = 0b1;//认证被拒绝
     const STATUS_IDENTIFIED = 0b10;//已经认证
+    const STATUS_UNSUBMITTED = 0b11;//暂未提交，初始状态
 
     /**
      * @inheritdoc
@@ -141,13 +142,13 @@ class Identification extends ActiveRecord
             'statusDefault' => [
                 'status',
                 'default',
-                'value' => self::STATUS_PENDING,
+                'value' => self::STATUS_UNSUBMITTED,
                 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE, self::SCENARIO_VERIFY]
             ],
             'StatusRange' => [
                 'status',
                 'in',
-                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED],
+                'range' => [self::STATUS_PENDING, self::STATUS_REJECTED, self::STATUS_IDENTIFIED, self::STATUS_UNSUBMITTED],
                 'on' => [self::SCENARIO_VERIFY]
             ],
 
