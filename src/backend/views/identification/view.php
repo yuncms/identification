@@ -5,6 +5,7 @@ use yuncms\widgets\DetailView;
 use yuncms\admin\widgets\Box;
 use yuncms\admin\widgets\Toolbar;
 use yuncms\admin\widgets\Alert;
+use yuncms\identification\models\Identification;
 
 /* @var $this yii\web\View */
 /* @var $model yuncms\identification\models\Identification */
@@ -53,12 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'header' => Yii::t('yuncms/identification', 'Authentication'),
                         'attribute' => 'status',
                         'value' => function ($model) {
-                            if ($model->status == 0) {
+                            if ($model->status == Identification::STATUS_UNSUBMITTED) {
+                                return Yii::t('yuncms/identification', 'Unsubmitted');
+                            } else if ($model->status == Identification::STATUS_PENDING) {
                                 return Yii::t('yuncms/identification', 'Pending review');
-                            } elseif ($model->status == 1) {
+                            } elseif ($model->status == Identification::STATUS_REJECTED) {
                                 return Yii::t('yuncms/identification', 'Rejected');
-                            } elseif ($model->status == 2) {
-                                return Yii::t('yuncms/identification', 'Authenticated');
+                            } elseif ($model->status == Identification::STATUS_IDENTIFIED) {
+                                return Yii::t('yuncms/identification', 'Identified');
                             }
                             return null;
                         },

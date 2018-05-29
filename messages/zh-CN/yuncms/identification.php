@@ -22,7 +22,7 @@ return [
     'Army ID' => '军官证',
     'Unsubmitted' => '未提交',
     'Identification' => '实名认证',
-    'Authenticated' => '已认证',
+    'Identified' => '已认证',
     'Authentication' => '实名认证',
     'Choose file' => '选择文件',
     'Created At' => '创建文件',
