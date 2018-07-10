@@ -41,6 +41,8 @@ class Identification extends \yuncms\identification\models\Identification
      */
     public $registrationPolicy;
 
+    public $verifyCode;
+
     /**
      * 屏蔽敏感字段
      * @return array
@@ -92,6 +94,16 @@ class Identification extends \yuncms\identification\models\Identification
                 'skipOnEmpty' => false,
                 'requiredValue' => true,
                 'message' => Yii::t('yuncms/identification', '{attribute} must be selected.')
+            ],
+
+            // verifyCode needs to be entered correctly
+            'verifyCodeRequired' => ['verifyCode', 'required'],
+            'verifyCodeString' => ['verifyCode', 'string', 'min' => 5, 'max' => 7],
+            'verifyCodeValidator' => ['verifyCode',
+                'yuncms\sms\captcha\CaptchaValidator',
+                'captchaAction' => '/sms/verify-code',
+                'skipOnEmpty' => false,
+                'message' => Yii::t('yuncms', 'Phone verification code input error.')
             ],
         ]);
     }
