@@ -98,11 +98,12 @@ class Identification extends \yuncms\identification\models\Identification
 
             // verifyCode needs to be entered correctly
             'verifyCodeRequired' => ['verifyCode', 'required', 'on' => [self::SCENARIO_UPDATE]],
-            'verifyCodeString' => ['verifyCode', 'string', 'min' => 5, 'max' => 7],
+            'verifyCodeString' => ['verifyCode', 'string', 'min' => 5, 'max' => 7, 'on' => [self::SCENARIO_UPDATE]],
             'verifyCodeValidator' => ['verifyCode',
                     'yuncms\sms\captcha\CaptchaValidator',
                     'captchaAction' => '/sms/verify-code',
                     'skipOnEmpty' => false,
+                'on' => [self::SCENARIO_UPDATE],
                     'message' => Yii::t('yuncms', 'Phone verification code input error.')
                 ],
 
